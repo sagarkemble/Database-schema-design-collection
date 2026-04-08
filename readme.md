@@ -1,7 +1,7 @@
 # Database Schema Designs
 
 A collection of well-structured database schema designs.
-This repository focuses on **clean architecture, scalability, and practical modeling** rather than just table creation.
+These schemas focus on **clean architecture, scalability, and practical modeling** rather than just table creation.
 
 Each schema folder includes:
 

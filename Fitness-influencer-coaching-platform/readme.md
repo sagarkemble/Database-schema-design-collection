@@ -1,84 +1,61 @@
-# Fitness Coaching Platform Database
+# 🏋️ Fitness Coaching & Subscription Management System
 
-A database design for an online fitness coaching platform where trainers manage clients, sell subscription plans, conduct sessions, track progress, and handle payments.
+A database design for a fitness coaching platform where users can enroll in subscription plans, join training sessions, track progress, receive trainer feedback, and manage payments.
 
----
-
-## 🚀 Features
-
-- User (client) and trainer management
-- Subscription plans with duration and pricing
-- Session-based consultations
-- User enrollments in plans and sessions
-- Trainer notes for personalized coaching
-- Payment tracking for subscriptions and sessions
-- Progress tracking (weight, body fat, feedback)
-
----
+![schema-diagram](./schema-diagram.png)
 
 ## 📦 Core Entities
 
 ### Users
 
-Stores client information like name, age, gender, and initial fitness data such as height, weight, and body fat percentage.
+Stores user information including personal details and initial fitness data.
 
 ### Trainers
 
-Stores trainer details who guide users through plans, sessions, and overall coaching.
+Stores trainer information including personal details.
 
 ### Subscription Plans
 
-Defines long-term coaching programs including fees, duration, and description.
+Stores available fitness plans with pricing, duration, and description.
 
 ### User Subscriptions
 
-Tracks which user has enrolled in which subscription plan, including start date, expiry date, and status (Active, Expired, Cancelled).
+Stores which user has subscribed to which plan along with status and validity.
 
 ### Sessions
 
-Represents one-time or short-term consultations or training sessions scheduled on specific dates.
+Stores training sessions with details like duration, fees, and schedule.
 
 ### User Sessions
 
-Maps users to sessions they have enrolled in.
+Stores which users are enrolled in which sessions.
 
 ### Trainer Notes
 
-Stores personalized notes given by trainers to users.  
-Each note can optionally be linked to a subscription or a session.
+Stores feedback or notes given by trainers to users based on sessions or subscriptions.
 
 ### Payments
 
-Tracks payments made for subscriptions or sessions, including payment method, provider payment ID, and status.
+Stores payments made by users for subscriptions or sessions.
 
 ### Progress
 
-Tracks user fitness updates over time such as weight, height, body fat percentage, and trainer feedback.
-
----
+Stores user fitness progress like weight, height, and body fat percentage over time.
 
 ## 🔗 Relationships
 
 - User → User Subscriptions (1:M)
-- User → User Sessions (1:M)
-- User → Trainer Notes (1:M)
-- User → Progress (1:M)
-
-- Trainer → Trainer Notes (1:M)
-
 - Subscription Plan → User Subscriptions (1:M)
 
+- User → User Sessions (1:M)
 - Session → User Sessions (1:M)
 
-- User Subscription → Payments (1:M)
-- User Session → Payments (1:M)
+- Trainer → Trainer Notes (1:M)
+- User → Trainer Notes (1:M)
+- User Subscription → Trainer Notes (1:M optional)
+- User Session → Trainer Notes (1:M optional)
 
----
+- User Subscription → Payments (1:1 optional)
+- User Session → Payments (1:1 optional)
 
-## 🧠 Notes
-
-- A user can purchase multiple subscription plans over time.
-- A user can attend multiple sessions.
-- Trainer notes provide personalized feedback and may be linked to either subscriptions or sessions.
-- Payments are flexible and support both subscription-based and session-based transactions.
-- Progress is tracked over time to monitor user fitness improvements.
+- User → Progress (1:M)

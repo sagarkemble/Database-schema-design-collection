@@ -4,52 +4,52 @@ A database design for an Instagram-based thrift store where creators sell thrift
 
 ![schema-diagram](./schema-diagram.png)
 
-## 🚀 Features
-
-- Customer management with multiple addresses
-- Thrifted & handmade product support
-- Product variants (size, color, quantity, pricing)
-- Order system with multiple items
-- Payment tracking
-- Shipping & delivery lifecycle tracking
-
 ## 📦 Core Entities
 
-- **Customers**  
-  Stores user information like name, email, phone, and avatar.
+### Customers
 
-- **Address**  
-  Supports multiple addresses per customer for flexible delivery.
+Stores customer information including name, email, phone number, and avatar.
 
-- **Items**  
-  Represents products (thrifted or handmade) with condition details.
+### Address
 
-- **Materials**  
-  Defines material composition of items (e.g., cotton 80%).
+Stores customer addresses for order delivery.
 
-- **Item Variants**  
-  Handles size, color, quantity, and price combinations.
+### Items
 
-- **Orders**  
-  Represents a purchase made by a customer.
+Stores product details such as name, type (thrifted/handmade), description, and condition.
 
-- **Order Items**  
-  Stores items inside an order with quantity.
+### Materials
 
-- **Payments**  
-  Tracks payment method, provider, and status.
+Stores material composition of items (e.g., cotton 80%).
 
-- **Shipments**  
-  Manages delivery process, tracking, and status updates.
+### Item Variants
+
+Stores variations of items like size, color, quantity, and price.
+
+### Orders
+
+Stores customer orders along with linked address, payment, and shipment.
+
+### Order Items
+
+Stores items included in an order with quantity.
+
+### Payments
+
+Stores payment details including method, provider, and status.
+
+### Shipments
+
+Stores shipping and delivery details including tracking and status.
 
 ## 🔗 Relationships
 
 - Customer --> Address (1:M)
 - Customer --> Orders (1:M)
-- Item --> Variants (1:M)
 - Item --> Materials (1:M)
+- Item --> Item Variants (1:M)
 - Order --> Order Items (1:M)
-- Order_Item --> Variant (1:1)
+- Order Item --> Item Variant (1:1)
 - Order --> Address (1:1)
-- Order --> Payment (1:1)
-- Order --> Shipment (1:1)
+- Order --> Payment (1:1 optional)
+- Order --> Shipment (1:1 optional)
